@@ -1,4 +1,6 @@
-%%%%%%%% INICIO DO ALGORITIMO
+%Acoustic-feedback-detection
+%Autor: AndrÃ© Heidemann Iarozinski
+%Date: 18/11/2015
 
  bs = 100;   % "bandsize"(Hz) , tamanho das faixas de freq
  nbs=80;    %num de bandas
@@ -23,9 +25,9 @@ for k=0:700          %%%%%%%%%%%%%%%%%%%%   Loop for principal p/ cada uma das 7
    L = length(S);                         % normalizando S
    P2 = abs(S/L);                            
    P = P2(1:L/2+1);
-   P(2:end-1) = 2*P(2:end-1);                               % *** P é o módulo do espectro positivo de S com as amplitudes normalizadas, 8k ptos (0-8kHz)        
+   P(2:end-1) = 2*P(2:end-1);                               % *** P Ã© o mÃ³dulo do espectro positivo de S com as amplitudes normalizadas, 8k ptos (0-8kHz)        
          
-   f = fs*(0:(L/2))/L;                     % 16000=fs , agora com frequencia 0 até 8kHz 
+   f = fs*(0:(L/2))/L;                     % 16000=fs , agora com frequencia 0 atÃ© 8kHz 
 
                                               % a partir do vetor P, crio o vetor b
    for i=0:(nbs-1)
@@ -34,7 +36,7 @@ for k=0:700          %%%%%%%%%%%%%%%%%%%%   Loop for principal p/ cada uma das 7
    
    end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% Loop de análise de pico
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Loop de anÃ¡lise de pico
   
    
    [pks,locs] = findpeaks(b,'Threshold',0.001);  %% funcao que retorna valores de pico maiores que o definido e a sua posicao (band de freq)
@@ -97,10 +99,10 @@ for k=0:700          %%%%%%%%%%%%%%%%%%%%   Loop for principal p/ cada uma das 7
       
      end
 
- if (sum(g))>=200        %%%%%%%%% momento em que é detectada as frequencias instáveis
+ if (sum(g))>=200        %%%%%%%%% momento em que Ã© detectada as frequencias instÃ¡veis
      if  (sum(g))<=300
      tempo=k/100;
-     tempo       %%%%%% mostrando tempo de detecção
+     tempo       %%%%%% mostrando tempo de detecÃ§Ã£o
      end
  end
 
